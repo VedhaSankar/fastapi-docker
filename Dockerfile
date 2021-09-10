@@ -1,11 +1,3 @@
-FROM python:3.9.5-slim-buster
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.7
 
-ADD . ./app
-
-WORKDIR /app
-
-RUN pip3 install -r requirements.txt
-
-EXPOSE 8500
-
-CMD [ "python","app.py" ]
+COPY ./app /app

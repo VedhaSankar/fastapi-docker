@@ -1,0 +1,2 @@
+circleci can't be used to run flask/ fastapi. you can host it on aws using ecr, ecs and run and see. but without it try using herokku or smn to host. 
+you can create images at the most. which is what has been done in our config file.

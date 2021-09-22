@@ -6,10 +6,11 @@ orbs:
 jobs:  
   build-and-test:    
     executor:
-      name: python/default
+      name: docker-published
       tag: '3.7'
     steps:
       - checkout
+      - setup_remote_docker
       - run:
           name: Log in to docker hub
           command: |

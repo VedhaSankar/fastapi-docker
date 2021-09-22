@@ -17,14 +17,16 @@ jobs:
       - run:
           name: Build from dockerfile
           command: |
-            TAG=edge make build
+            docker-compose up --build
       - run:
-          name: Push to docker hub
-          command: |
-            TAG=edge make push
+          name: Tag stuff
+          command: docker tag latest $DOCKER_USER/latest
+      - run:
+          name: Push image ig
+          command: docker push vedhasankar/latest
       - run:
           name: Compose Up
-          command: docker-compose up --build
+          command: docker-compose up
       # - run:
       #     name: Install Dependencies
       #     command: pip install -r requirements.txt

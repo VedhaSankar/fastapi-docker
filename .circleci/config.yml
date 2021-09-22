@@ -6,7 +6,7 @@ orbs:
 jobs:  
   build-and-test:    
     executor:
-      name: docker-published
+      name: docker-publisher
       tag: '3.7'
     steps:
       - checkout

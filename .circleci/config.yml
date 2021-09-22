@@ -5,9 +5,8 @@ orbs:
 
 jobs:  
   build-and-test:    
-    executor:
-      name: docker-publisher
-      tag: '3.7'
+    executor: docker-publisher
+      
     steps:
       - checkout
       - setup_remote_docker

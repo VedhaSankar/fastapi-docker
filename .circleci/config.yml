@@ -28,9 +28,6 @@ jobs:
           command: |
             docker build -t $IMAGE_NAME:$IMAGE_TAG .
       - run:
-          name: Tag stuff
-          command: docker tag $IMAGE_TAG $DOCKER_USER/$IMAGE_TAG
-      - run:
           name: Push image ig
           command: docker push $IMAGE_NAME:$IMAGE_TAG
 

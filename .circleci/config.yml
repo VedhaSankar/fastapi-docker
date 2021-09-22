@@ -3,6 +3,15 @@ version: 2.1
 orbs:  
   python: circleci/python@1.0.0
 
+executors:
+  docker-publisher:
+    environment:
+      IMAGE_NAME: vedhasankar/fastapi
+      IMAGE_TAG: latest
+      BRANCH_NAME: master
+    docker:
+      - image: circleci/buildpack-deps:stretch
+
 jobs:  
   build-and-test:    
     executor: docker-publisher

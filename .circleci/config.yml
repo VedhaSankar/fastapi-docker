@@ -11,16 +11,26 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Setup Virtual env
-          command: |            
-            virtualenv -p python3.7 env            
-            echo "source ./env/bin/activate" >> $BASH_ENV
+          name: Log in to docker hub
+          command: |
+            docker login -u $DOCKER_USER -p $DOCKER_PAS
       - run:
-          name: Install Dependencies
-          command: pip install -r requirements.txt
+          name: Build from dockerfile
+          command: |
+            TAG=edge make build
       - run:
-          name: Run file
-          command: uvicorn app:app --reload
+          name: Push to docker hub
+          command: |
+            TAG=edge make push
+      - run:
+          name: Compose Up
+          command: docker-compose up --build
+      # - run:
+      #     name: Install Dependencies
+      #     command: pip install -r requirements.txt
+      # - run:
+      #     name: Run file
+      #     command: uvicorn app:app --reload
     
 workflows:  
   build-test-and-deploy:    

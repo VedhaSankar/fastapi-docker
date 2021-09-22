@@ -19,8 +19,8 @@ jobs:
           name: Install Dependencies
           command: pip install -r requirements.txt
       - run:
-        name: Run file
-        command: uvicorn app:app --reload
+          name: Run file
+          command: pytest
     
 workflows:  
   build-test-and-deploy:    

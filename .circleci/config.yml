@@ -20,7 +20,7 @@ jobs:
           command: pip install -r requirements.txt
       - run:
           name: Run file
-          command: pytest
+          command: uvicorn app:app --reload
     
 workflows:  
   build-test-and-deploy:    

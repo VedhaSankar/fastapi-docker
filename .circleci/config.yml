@@ -17,16 +17,14 @@ jobs:
       - run:
           name: Build from dockerfile
           command: |
-            docker-compose up --build
+            docker build -t $IMAGE_NAME:$IMAGE_TAG .
       - run:
           name: Tag stuff
-          command: docker tag latest $DOCKER_USER/latest
+          command: docker tag $IMAGE_TAG $DOCKER_USER/$IMAGE_TAG
       - run:
           name: Push image ig
-          command: docker push vedhasankar/latest
-      - run:
-          name: Compose Up
-          command: docker-compose up
+          command: docker push $IMAGE_NAME:$IMAGE_TAG
+
       # - run:
       #     name: Install Dependencies
       #     command: pip install -r requirements.txt
